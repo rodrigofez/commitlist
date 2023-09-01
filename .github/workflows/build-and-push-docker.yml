@@ -27,7 +27,7 @@ jobs:
           REPOSITORY: ${{ vars.ECR_REPOSITORY_NAME }}
         run: |
           TAG_LATEST=$REGISTRY/$REPOSITORY:latest
-          docker build --build-arg -t $TAG_LATEST .
+          docker build -t $TAG_LATEST .
           docker push $TAG_LATEST
       - name: Cleanup working dir
         run: rm -rf *

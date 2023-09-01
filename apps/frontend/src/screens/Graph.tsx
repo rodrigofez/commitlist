@@ -15,7 +15,7 @@ export const Graph = () => {
   return (
     <div className="m-4 flex flex-col items-start gap-2">
       {isLoading && (
-        <div className="h-screen w-full  rounded-md bg-gray-200 opacity-80 animate-pulse" />
+        <div className="h-screen w-full rounded-md bg-gray-200 opacity-80 animate-pulse" />
       )}
       {isError && <Error>There was an error retrieving commits</Error>}
       {isSuccess && (
