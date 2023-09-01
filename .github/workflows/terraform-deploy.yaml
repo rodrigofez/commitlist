@@ -1,0 +1,43 @@
+name: deployment by terraform
+
+on:
+  push:
+    branches: ['main']
+    paths: ['terraform/**']
+
+permissions:
+  contents: read
+
+jobs:
+  terraform:
+    name: terraform services
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.aws_access_key_id }}
+          aws-secret-access-key: ${{ secrets.aws_secret_access_key }}
+          aws-region: 'us-east-2'
+
+      - uses: actions/checkout@v3
+
+      - uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.5.6
+
+      - name: Terraform init
+        working-directory: ./terraform
+        id: init
+        run: terraform init
+
+      - name: Terraform plan
+        working-directory: ./terraform
+        id: plan
+        run: terraform plan -out new_state.out
+
+      - name: Terraform apply
+        working-directory: ./terraform
+        id: apply
+        run: |
+          terraform apply -auto-approve "new_state.out"
