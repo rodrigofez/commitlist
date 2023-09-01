@@ -3,6 +3,7 @@
   "globalDotEnv": [".env"],
   "pipeline": {
     "dev": {
+      "dependsOn": ["build"],
       "dotEnv": [
         ".env.development.local",
         ".env.local",
