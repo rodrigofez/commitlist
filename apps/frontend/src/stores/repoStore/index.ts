@@ -16,7 +16,7 @@ export const useRepoStore = create<RepoStore>()(
       setBranch: (branch) => set((state) => ({ ...state, branch })),
     }),
     {
-      name: 'repo',
+      name: 'repository',
     },
   ),
 );

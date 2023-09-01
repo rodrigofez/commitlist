@@ -19,10 +19,11 @@
     "react-hot-toast": "2.4.1",
     "react-intersection-observer": "9.5.2",
     "react-router-dom": "6.15.0",
+    "reactflow": "11.8.3",
     "zustand": "4.4.1"
   },
   "devDependencies": {
-    "@testing-library/react": "14.0.0",
+    "@testing-library/react": "^14.0.0",
     "@types/react": "18.2.15",
     "@types/react-dom": "18.2.7",
     "@typescript-eslint/eslint-plugin": "6.0.0",
