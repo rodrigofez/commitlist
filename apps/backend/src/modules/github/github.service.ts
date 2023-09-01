@@ -13,7 +13,9 @@ import { AxiosError } from 'axios';
 export class GithubService {
   private githubUrl: string;
 
-  constructor(private readonly httpService: HttpService) {}
+  constructor(private readonly httpService: HttpService) {
+    this.githubUrl = 'https://api.github.com';
+  }
 
   async getCommitList(
     data: GetCommitListDto,
