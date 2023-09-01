@@ -1,0 +1,24 @@
+{
+  "name": "commitlist",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "dotenv -- turbo dev",
+    "build": "turbo build",
+    "start": "node apps/backend/dist/main.js",
+    "test": "turbo test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "workspaces": [
+    "apps/*"
+  ],
+  "devDependencies": {
+    "turbo": "1.10.13"
+  },
+  "dependencies": {
+    "backend": "^0.0.1"
+  }
+}
