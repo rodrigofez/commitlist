@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  scrollbar-gutter: stable;
+  overflow: auto;
+}
+
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  background: linear-gradient(to bottom, #fafafa 0%, #f6f8fa 31%);
+}
