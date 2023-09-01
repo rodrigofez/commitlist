@@ -1,24 +1,42 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
-import { AppModule } from './../src/app.module';
+import { Test } from '@nestjs/testing';
+import { GithubModule } from '../src/modules/github/github.module';
+import { GithubService } from '../src/modules/github/github.service';
+import { INestApplication } from '@nestjs/common';
 
-describe('AppController (e2e)', () => {
+describe('Commits', () => {
   let app: INestApplication;
+  const githubService = {
+    getCommitList: () => [{ sha: 'b32af9032fj0a', message: 'feat: message' }],
+  };
 
-  beforeEach(async () => {
-    const moduleFixture: TestingModule = await Test.createTestingModule({
-      imports: [AppModule],
-    }).compile();
+  beforeAll(async () => {
+    const moduleRef = await Test.createTestingModule({
+      imports: [GithubModule],
+    })
+      .overrideProvider(GithubService)
+      .useValue(githubService)
+      .compile();
 
-    app = moduleFixture.createNestApplication();
+    app = moduleRef.createNestApplication();
     await app.init();
   });
 
-  it('/ (GET)', () => {
+  it(`/GET commits`, () => {
     return request(app.getHttpServer())
-      .get('/')
+      .get('/github/commits')
+      .query({
+        owner: 'rodrigofez',
+        repo: 'commitlist',
+        branch: 'main',
+        page: 1,
+        take: 1,
+      })
       .expect(200)
-      .expect('Hello World!');
+      .expect(githubService.getCommitList());
+  });
+
+  afterAll(async () => {
+    await app.close();
   });
 });
