@@ -3,6 +3,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { ConfigModule } from '@nestjs/config';
 import { validationSchema } from './config/env.config';
 import { join } from 'path';
+import { GithubModule } from './modules/github/github.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { join } from 'path';
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '../../', 'frontend/dist'),
     }),
+    GithubModule,
   ],
 })
 export class AppModule {}
