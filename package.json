@@ -7,7 +7,9 @@
     "dev": "dotenv -- turbo dev",
     "build": "turbo build",
     "start": "node apps/backend/dist/main.js",
-    "test": "turbo test"
+    "test": "turbo test",
+    "prepare": "husky install",
+    "pre-commit": "lint-staged"
   },
   "keywords": [],
   "author": "",
@@ -16,9 +18,15 @@
     "apps/*"
   ],
   "devDependencies": {
+    "@commitlint/cli": "17.7.1",
+    "@commitlint/config-conventional": "17.7.0",
+    "dotenv-cli": "7.3.0",
+    "husky": "8.0.3",
+    "lint-staged": "14.0.1",
+    "tsc-files": "1.1.4",
     "turbo": "1.10.13"
   },
-  "dependencies": {
-    "backend": "^0.0.1"
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
