@@ -8,11 +8,6 @@
 
   <p align="center">
     An app to review github commit history for a repo
-    <br />
-    <br />
-    <a href="https://commitlist.rodrigolopez.dev/">View Live Demo</a>
-    ·
-    <a href="https://commitlist.rodrigolopez.dev/api/v1/docs">View API docs</a>
   </p>
 </div>
 
